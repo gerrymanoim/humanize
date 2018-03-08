@@ -1,5 +1,5 @@
 
-right_now <- function() {
+now <- function() {
   Sys.time()
 }
 
@@ -7,7 +7,8 @@ today <- function() {
   Sys.Date()
 }
 
-natural_delta <- function(value, months=TRUE) {
+
+natural_delta <- function(value, use_months=TRUE) {
 
 }
 
@@ -35,11 +36,11 @@ natural_day <- function(value, format='%b %d') {
   assert_that(is.date(value))
   delta <- value - today()
 
-  if(delta == 0) {
+  if (delta == 0) {
     out <- 'today'
-  } else if(delta == 1) {
+  } else if (delta == 1) {
     out <- 'tomorrow'
-  } else if(delta == -1) {
+  } else if (delta == -1) {
     out <- 'yesterday'
   } else {
     out <- format(value, format)
@@ -50,8 +51,8 @@ natural_day <- function(value, format='%b %d') {
 
 #' Natural Date
 #'
-#' Like naturalday, but will append a year for dates that are a year ago or
-#' more.
+#' Like naturalday, but will append a year for dates that are a year or
+#' more in the past or future
 #'
 #' @param value
 #'
@@ -62,7 +63,7 @@ natural_day <- function(value, format='%b %d') {
 natural_date <- function(value) {
   assert_that(is.date(value))
   delta <- abs(value - today())
-  if(delta >= 365) {
+  if (delta >= 365) {
     return(natural_day(value, '%b %d %Y'))
   } else {
     return(natural_day(value))
