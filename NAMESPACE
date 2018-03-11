@@ -2,5 +2,9 @@
 
 export(natural_date)
 export(natural_day)
+export(natural_time)
+export(seconds_to_natural_delta)
 importFrom(assertthat,assert_that)
 importFrom(assertthat,is.date)
+importFrom(lubridate,now)
+importFrom(lubridate,today)

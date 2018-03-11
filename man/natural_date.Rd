@@ -10,6 +10,6 @@ natural_date(value)
 \item{value}{}
 }
 \description{
-Like naturalday, but will append a year for dates that are a year ago or
-more.
+Like naturalday, but will append a year for dates that are a year or
+more in the past or future
 }

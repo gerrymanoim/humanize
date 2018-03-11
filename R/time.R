@@ -1,20 +1,103 @@
 
-now <- function() {
-  Sys.time()
+#' @importFrom lubridate now
+lubridate::now
+
+#' @importFrom lubridate today
+lubridate::today
+
+#' Takes in a number of seconds and computes a "human" delta
+#' @export
+seconds_to_natural_delta <- function(seconds, use_months=TRUE) {
+  seconds_in_day <- 60*60*24
+
+  seconds <- abs(seconds)
+  days <- trunc(seconds/seconds_in_day)
+  years <- trunc(days/365)
+  days <- days %% ifelse(years == 0, 365, 365*years)
+  months <- trunc(days / 30.5) #interpolate
+  # with much thanks to humanize (python)
+  if (years == 0) {
+    if (days < 1) {
+      if (seconds == 0) {
+        return("now")
+      } else if (seconds == 1) {
+        return("a second")
+      } else if (seconds < 60) {
+        return(glue::glue("{seconds} seconds"))
+      } else if (60 <= seconds & seconds < 120) {
+        return("a minute")
+      } else if ( 120 <= seconds & seconds < 3600) {
+        minutes = trunc(seconds / 60)
+        return(glue::glue("{minutes} minutes"))
+      } else if ( 3600 <= seconds & seconds < (3600 * 2)) {
+        return("an hour")
+      } else if ( 3600 < seconds) {
+        hours = trunc(seconds / 3600)
+        return(glue::glue("{hours} hours"))
+      }
+    } else {
+      if (days == 1) {
+        return("a day")
+      }
+      if (!use_months) {
+        return(glue::glue("{days} days"))
+      } else {
+        if (months == 0) {
+          return(glue::glue("{days} days"))
+        } else if (months == 1) {
+          return("a month")
+        } else {
+          return(glue::glue("{months} months"))
+        }
+      }
+    }
+  } else if (years == 1) {
+    if (months == 0) {
+      if (days == 0) {
+        return("a year")
+      } else if (days == 1) {
+        return(glue::glue("1 year, 1 day"))
+      } else {
+        return(glue::glue("1 year, {days} days"))
+      }
+    } else if (use_months) {
+      if (months == 1) {
+        return("1 year, 1 month")
+      } else {
+        return(glue::glue("1 year, {months} months"))
+      }
+    } else {
+      return(glue::glue("1 year, {days} days"))
+    }
+  } else {
+    return(glue::glue("{years} years"))
+  }
 }
 
-today <- function() {
-  Sys.Date()
-}
 
 
-natural_delta <- function(value, use_months=TRUE) {
+#' Given a datetime or a number of seconds, return a natraul representation of that resolution that makes sense
+#' @export
+natural_time <- function(value, future=FALSE, use_months=TRUE) {
+  if (assertthat::is.number(value)) {
+    interval_seconds <- value
+  } else {
+    time_diff <- lubridate::interval(value, now())
+    interval_seconds <- lubridate::time_length(time_diff, "seconds")
+    if (interval_seconds >= 0) {
+      future <- FALSE
+    } else {
+      future <- TRUE
+    }
+  }
+  interval_seconds <- abs(interval_seconds)
+  natural_delta <- seconds_to_natural_delta(trunc(interval_seconds))
+  if (natural_delta == "now") {
+    return(natural_delta)
+  }
 
-}
-
-
-natural_time <- function(value, future=FALSE, months=TRUE) {
-
+  rel_str <- ifelse(future, "from now", "ago")
+  paste(natural_delta, rel_str)
 }
 
 

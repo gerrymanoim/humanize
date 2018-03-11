@@ -13,4 +13,5 @@ Suggests:
     testthat
 Imports: 
     lubridate,
-    assertthat
+    assertthat,
+    glue
