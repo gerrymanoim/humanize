@@ -114,6 +114,7 @@ test_that("seconds_to_natural_delta with months works as expected", {
 
 test_that("natural_time works as expected", {
   right_now <- lubridate::now()
+  # need to use list here so we can mix ints and times
   test_list <- list(
     right_now,
     right_now - get_duration_helper(seconds = 1),
@@ -140,7 +141,7 @@ test_that("natural_time works as expected", {
     right_now - get_duration_helper(days = 365*2 + 65),
     right_now - get_duration_helper(days = 365 + 4)
   )
-  # need to fix the unit of time
+  # need to fix the current  time
   with_mock(
     now  = function(x) {right_now},
     test_output <- test_list %>%
@@ -176,6 +177,78 @@ test_that("natural_time works as expected", {
   )
   purrr::walk2(test_output, result_list, expect_match)
 })
+
+test_that("natural_time no months works as expected", {
+  right_now <- lubridate::now()
+  # need to use list here so we can mix ints and times
+  test_list = list(
+    right_now,
+    right_now - get_duration_helper(seconds = 1),
+    right_now - get_duration_helper(seconds = 30),
+    right_now - get_duration_helper(minutes = 1, seconds = 30),
+    right_now - get_duration_helper(minutes = 2),
+    right_now - get_duration_helper(hours = 1, minutes = 30, seconds = 30),
+    right_now - get_duration_helper(hours = 23, minutes = 50, seconds = 50),
+    right_now - get_duration_helper(days = 1),
+    right_now - get_duration_helper(days = 17),
+    right_now - get_duration_helper(days = 47),
+    right_now - get_duration_helper(days = 500),
+    right_now - get_duration_helper(days = 365*2 + 35),
+    right_now + get_duration_helper(seconds = 1),
+    right_now + get_duration_helper(seconds = 30),
+    right_now + get_duration_helper(minutes = 1, seconds = 30),
+    right_now + get_duration_helper(minutes = 2),
+    right_now + get_duration_helper(hours = 1, minutes = 30, seconds = 30),
+    right_now + get_duration_helper(hours = 23, minutes = 50, seconds = 50),
+    right_now + get_duration_helper(days = 1),
+    right_now + get_duration_helper(days = 500),
+    right_now + get_duration_helper(days = 365*2 + 35),
+    right_now + get_duration_helper(days = 10000),
+    right_now - get_duration_helper(days = 365 + 35),
+    30,
+    right_now - get_duration_helper(days = 365*2 + 65),
+    right_now - get_duration_helper(days = 365 + 4)
+  )
+
+  # need to fix the current  time
+  with_mock(
+    now  = function(x) {right_now},
+    test_output <- test_list %>%
+      purrr::map_chr(natural_time, use_months = FALSE),
+    .env = "lubridate"
+  )
+
+  result_list = c(
+    'now',
+    'a second ago',
+    '30 seconds ago',
+    'a minute ago',
+    '2 minutes ago',
+    'an hour ago',
+    '23 hours ago',
+    'a day ago',
+    '17 days ago',
+    '47 days ago',
+    '1 year, 135 days ago',
+    '2 years ago',
+    'a second from now',
+    '30 seconds from now',
+    'a minute from now',
+    '2 minutes from now',
+    'an hour from now',
+    '23 hours from now',
+    'a day from now',
+    '1 year, 135 days from now',
+    '2 years from now',
+    '27 years from now',
+    '1 year, 35 days ago',
+    '30 seconds ago',
+    '2 years ago',
+    '1 year, 4 days ago'
+  )
+  purrr::walk2(test_output, result_list, expect_match)
+})
+
 
 test_that("natural_day works as expected", {
 

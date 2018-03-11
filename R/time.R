@@ -91,7 +91,7 @@ natural_time <- function(value, future=FALSE, use_months=TRUE) {
     }
   }
   interval_seconds <- abs(interval_seconds)
-  natural_delta <- seconds_to_natural_delta(trunc(interval_seconds))
+  natural_delta <- seconds_to_natural_delta(trunc(interval_seconds), use_months)
   if (natural_delta == "now") {
     return(natural_delta)
   }
