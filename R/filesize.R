@@ -12,14 +12,12 @@ suffixes <- list(
 #' @param suffix_type One of 'decimal', 'binary', 'gnu'
 #' @param fmt Extra number formatting
 #'
-#' @return
 #' @export
 #'
 #' @examples
+#' natural_size(3000)
 natural_size <- function(bytes, suffix_type="decimal", fmt='%.1f') {
-  if (!(suffix_type %in% names(suffixes))) {
-    # TODO error
-  }
+  stopifnot(suffix_type %in% names(suffixes))
   # How much value check do I need for bytes?
   suffix <- suffixes[[suffix_type]]
   gnu <- suffix_type == "gnu"

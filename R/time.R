@@ -6,6 +6,7 @@ lubridate::now
 lubridate::today
 
 #' Takes in a number of seconds and computes a "human" delta
+#' @seealso `natural_time`
 #' @export
 seconds_to_natural_delta <- function(seconds, use_months=TRUE) {
   seconds_in_day <- 60*60*24
@@ -76,9 +77,21 @@ seconds_to_natural_delta <- function(seconds, use_months=TRUE) {
 
 
 
-#' Given a datetime or a number of seconds, return a natraul representation of that resolution that makes sense
+#' Convert times to natural values relative to now.
+#'
+#' Given a datetime or a number of seconds, return a natural representation of
+#' that resolution that makes sense. Ago/From now determined by positve or
+#' negative values.
+#'
+#' @param value a datetime or a number of seconds
+#' @param use_months Boolean whether we should (imprecisely) use months as a
+#'   unit
+#'
 #' @export
-natural_time <- function(value, future=FALSE, use_months=TRUE) {
+#' @examples
+#' natural_time(Sys.time()-1)
+#' natural_time(Sys.time()-100)
+natural_time <- function(value, use_months=TRUE) {
   if (assertthat::is.number(value)) {
     interval_seconds <- value
   } else {
@@ -108,13 +121,15 @@ natural_time <- function(value, future=FALSE, use_months=TRUE) {
 #' returns representing string. Otherwise, returns a string formatted according
 #' to `format`
 #'
-#' @param value
-#' @param format
+#' @param value A date value
+#' @param format Optional formatting string for dates not yesterday, today, tomorrow
 #'
-#' @return
+#' @return A nicely formatted date
 #' @export
 #'
 #' @examples
+#' natural_day(Sys.Date())
+#' natural_day(Sys.Date()-10)
 natural_day <- function(value, format='%b %d') {
   assert_that(is.date(value))
   delta <- value - today()
@@ -134,15 +149,16 @@ natural_day <- function(value, format='%b %d') {
 
 #' Natural Date
 #'
-#' Like naturalday, but will append a year for dates that are a year or
+#' Like natural day, but will append a year for dates that are a year or
 #' more in the past or future
 #'
-#' @param value
+#' @param value A Date value
 #'
-#' @return
 #' @export
-#'
+#' @seealso `natural_day`
 #' @examples
+#' natural_date(Sys.Date())
+#' natural_date(Sys.Date()-10)
 natural_date <- function(value) {
   assert_that(is.date(value))
   delta <- abs(value - today())
