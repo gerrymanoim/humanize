@@ -1,6 +1,6 @@
 Package: humanize
 Version: 0.1
-Title: Create values for human consumption. 
+Title: Create values for human consumption
 Description: An almost direct port of the python humanize package <https://github.com/jmoiron/humanize>,
   this package contains utilities to convert values into human readable forms. 
 Authors@R: person("Gerry", "Manoim", email = "gerrymanoim@gmail.com", role = c("aut", "cre"))

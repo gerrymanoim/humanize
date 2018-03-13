@@ -6,6 +6,10 @@ lubridate::now
 lubridate::today
 
 #' Takes in a number of seconds and computes a "human" delta
+#'
+#' @param seconds A positive number of seconds
+#' @param use_months Boolean whether we should (imprecisely) use months as a unit
+#'
 #' @seealso `natural_time`
 #' @export
 seconds_to_natural_delta <- function(seconds, use_months=TRUE) {

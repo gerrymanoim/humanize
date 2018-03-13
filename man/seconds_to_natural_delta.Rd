@@ -6,6 +6,11 @@
 \usage{
 seconds_to_natural_delta(seconds, use_months = TRUE)
 }
+\arguments{
+\item{seconds}{A positive number of seconds}
+
+\item{use_months}{Boolean whether we should (imprecisely) use months as a unit}
+}
 \description{
 Takes in a number of seconds and computes a "human" delta
 }
