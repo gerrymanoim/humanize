@@ -3,6 +3,8 @@
 humanize
 ========
 
+[![Travis-CI Build Status](https://travis-ci.org/newtux/humanize.svg?branch=master)](https://travis-ci.org/newtux/humanize)
+
 Humanize is an almost direct port of the python [humanize package](https://github.com/jmoiron/humanize).
 
 The goal of humanize is to provide some utlities in order to turn values (so far times and file sizes) into human readable forms
@@ -74,4 +76,6 @@ Todo
 This is still a very early cut of the package.
 
 -   Better support in times? For diff time?
+-   Maybe add times relative to other times?
+-   Export helper functions used in tests?
 -   Port over the numbers code

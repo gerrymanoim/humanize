@@ -1,6 +1,7 @@
 ## Test environments
 * local OS X install, R 3.3.3
 * ubuntu 12.04 (on travis-ci), R 3.3.3
+* windows (on win-builder) R Under development (unstable) (2018-03-12 r74391)
 
 ## R CMD check results
 
