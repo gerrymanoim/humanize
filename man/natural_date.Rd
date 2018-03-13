@@ -7,9 +7,16 @@
 natural_date(value)
 }
 \arguments{
-\item{value}{}
+\item{value}{A Date value}
 }
 \description{
-Like naturalday, but will append a year for dates that are a year or
+Like natural day, but will append a year for dates that are a year or
 more in the past or future
+}
+\examples{
+natural_date(Sys.Date())
+natural_date(Sys.Date()-10)
+}
+\seealso{
+\code{natural_day}
 }

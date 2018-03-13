@@ -7,10 +7,19 @@
 natural_day(value, format = "\%b \%d")
 }
 \arguments{
-\item{format}{}
+\item{value}{A date value}
+
+\item{format}{Optional formatting string for dates not yesterday, today, tomorrow}
+}
+\value{
+A nicely formatted date
 }
 \description{
 For date values that are tomorrow, today or yesterday compared to present day
 returns representing string. Otherwise, returns a string formatted according
 to \code{format}
+}
+\examples{
+natural_day(Sys.Date())
+natural_day(Sys.Date()-10)
 }

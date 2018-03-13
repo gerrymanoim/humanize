@@ -9,3 +9,6 @@ seconds_to_natural_delta(seconds, use_months = TRUE)
 \description{
 Takes in a number of seconds and computes a "human" delta
 }
+\seealso{
+\code{natural_time}
+}

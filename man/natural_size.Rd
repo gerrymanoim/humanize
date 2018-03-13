@@ -16,3 +16,6 @@ natural_size(bytes, suffix_type = "decimal", fmt = "\%.1f")
 \description{
 Convert bytes to a more natural representation
 }
+\examples{
+natural_size(3000)
+}
