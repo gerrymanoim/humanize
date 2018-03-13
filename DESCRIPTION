@@ -1,9 +1,10 @@
 Package: humanize
-Version: 0.0.0.9000
-Title: What the Package Does (One Line, Title Case)
-Description: What the package does (one paragraph).
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-License: What license is it under?
+Version: 0.1
+Title: Create values for human consumption. 
+Description: An almost direct port of the python humanize package <https://github.com/jmoiron/humanize>,
+  this package contains utilities to convert values into human readable forms. 
+Authors@R: person("Gerry", "Manoim", email = "gerrymanoim@gmail.com", role = c("aut", "cre"))
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
