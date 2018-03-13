@@ -97,11 +97,11 @@ natural_time <- function(value, use_months=TRUE) {
   } else {
     time_diff <- lubridate::interval(value, now())
     interval_seconds <- lubridate::time_length(time_diff, "seconds")
-    if (interval_seconds >= 0) {
-      future <- FALSE
-    } else {
-      future <- TRUE
-    }
+  }
+  if (interval_seconds >= 0) {
+    future <- FALSE
+  } else {
+    future <- TRUE
   }
   interval_seconds <- abs(interval_seconds)
   natural_delta <- seconds_to_natural_delta(trunc(interval_seconds), use_months)
