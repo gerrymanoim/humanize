@@ -1,3 +1,11 @@
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* Added a period before "this package" in Description
+* Quoted package/sofware names (humanize/python) in single quotes (e.g. 'python') in description.
+
+
 ## Test environments
 * local OS X install, R 3.4.3
 * ubuntu 12.04 (on travis-ci), R 3.4.2
