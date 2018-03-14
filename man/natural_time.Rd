@@ -14,7 +14,7 @@ unit}
 }
 \description{
 Given a datetime or a number of seconds, return a natural representation of
-that resolution that makes sense. Ago/From now determined by positve or
+that resolution that makes sense. Ago/From now determined by positive or
 negative values.
 }
 \examples{
