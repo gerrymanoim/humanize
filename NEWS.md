@@ -1,4 +1,4 @@
-# humanize 0.1
+# humanize 0.1.0
 
 * Ported over `time` functions
 * Ported over `filesize` functions
