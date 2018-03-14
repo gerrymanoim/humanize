@@ -4,16 +4,16 @@ Title: Create Values for Human Consumption
 Description: An almost direct port of the python humanize package <https://github.com/jmoiron/humanize>,
   this package contains utilities to convert values into human readable forms. 
 Authors@R: person("Gerry", "Manoim", email = "gerrymanoim@gmail.com", role = c("aut", "cre"))
-License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-Suggests: 
+Suggests:
     testthat,
     purrr
-Imports: 
+Imports:
     lubridate,
     assertthat,
     glue
+License: MIT + file LICENSE
