@@ -7,6 +7,8 @@
 \alias{reexports}
 \alias{is.date}
 \alias{reexports}
+\alias{is.count}
+\alias{reexports}
 \alias{now}
 \alias{reexports}
 \alias{today}
@@ -17,7 +19,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{assertthat}{\code{\link[assertthat]{assert_that}}, \code{\link[assertthat]{is.date}}}
+  \item{assertthat}{\code{\link[assertthat]{assert_that}}, \code{\link[assertthat]{is.date}}, \code{\link[assertthat]{is.count}}}
 
   \item{lubridate}{\code{\link[lubridate]{now}}, \code{\link[lubridate]{today}}}
 }}
