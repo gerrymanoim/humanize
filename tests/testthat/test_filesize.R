@@ -1,3 +1,4 @@
+context("test_time.R")
 test_that("natural_size decimal works as expected", {
   test_input <- c(300, 3000, 3000000, 3000000000, 3000000000000,10**26 * 30)
 

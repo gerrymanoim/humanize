@@ -1,4 +1,4 @@
-
+context("test_number.R")
 test_that("count_as_ap works as expected", {
   test_input <- c(1, 2, 4, 5, 9, 10, 1000000000)
   test_output <- test_input %>%
