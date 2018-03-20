@@ -3,8 +3,21 @@ count_as_ordinal <- function(value) {
 
 }
 
-count_as_comma <- function(value, sep=",") {
-
+#' Convert an number to a string with comma seperation
+#'
+#' Just a wrapper around `format` with defaults for full digits
+#'
+#' @param value A numeric
+#'
+#' @return A string with comma separation every three digits
+#' @export
+#'
+#' @examples
+#' number_as_comma(1000)
+#' number_as_comma(10000)
+number_as_comma <- function(value) {
+  assert_that(is.numeric(value))
+  format(value, big.mark = ",", scientific = FALSE, digits = 22)
 }
 
 human_powers <- 10^c(6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 100)
