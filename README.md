@@ -3,14 +3,20 @@
 humanize
 ========
 
-[![Travis-CI Build Status](https://travis-ci.org/newtux/humanize.svg?branch=master)](https://travis-ci.org/newtux/humanize)
+[![Travis-CI Build Status](https://travis-ci.org/newtux/humanize.svg?branch=master)](https://travis-ci.org/newtux/humanize) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/humanize)](https://cran.r-project.org/package=humanize)
 
 Humanize is an almost direct port of the python [humanize package](https://github.com/jmoiron/humanize).
 
-The goal of humanize is to provide some utlities in order to turn values (so far times and file sizes) into human readable forms
+The goal of humanize is to provide some utlities in order to turn values (so far times, file sizes, and numbers) into human readable forms.
 
 Installation
 ------------
+
+You can install the latest CRAN version with:
+
+``` r
+install.packages("humanize")
+```
 
 You can install humanize from github with:
 
