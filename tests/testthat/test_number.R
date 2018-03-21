@@ -1,5 +1,14 @@
 context("test_number.R")
 
+test_that("count_as_ordinal works as expected", {
+  test_input <- c(1, 2, 3, 4, 11, 12, 13, 101, 102, 103, 111)
+  test_output <- test_input %>%
+    purrr::map_chr(count_as_ordinal)
+  results <- c('1st', '2nd', '3rd', '4th', '11th', '12th', '13th',
+               '101st', '102nd', '103rd', '111th')
+  purrr::walk2(test_output, results, expect_match)
+})
+
 test_that("number_as_comma works as expected", {
   test_input <- c(100, 1000, 10123, 10311, 1000000, 1234567.25, 100,
                 1000, 10123, 10311, 1000000, 1234567.1234567)

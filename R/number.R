@@ -1,6 +1,34 @@
 
-count_as_ordinal <- function(value) {
+ordinals <- list(
+  "0" = "th",
+  "1" = "st",
+  "2" = "nd",
+  "3" = "rd",
+  "4" = "th",
+  "5" = "th",
+  "6" = "th",
+  "7" = "th",
+  "8" = "th",
+  "9" = "th"
+)
 
+#' Transform a count to an ordinal string
+#'
+#' @param value A single positive integer
+#'
+#' @return A string with the ordinal reprisentation of a number
+#' @export
+#'
+#' @examples
+#' count_as_ordinal(1)
+#' count_as_ordinal(111)
+count_as_ordinal <- function(value) {
+  assert_that(is.count(value))
+
+  if (value %% 100 %in% c(11, 12, 13)) {
+    return(paste0(value, ordinals[["0"]]))
+  }
+  paste0(value, ordinals[[as.character(value %% 10)]])
 }
 
 #' Convert an number to a string with comma seperation
