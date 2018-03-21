@@ -17,3 +17,4 @@ Imports:
     assertthat,
     glue
 License: MIT + file LICENSE
+BugReports: https://github.com/newtux/humanize/issues
