@@ -28,6 +28,8 @@ devtools::install_github("newtux/humanize")
 Examples
 --------
 
+### Times
+
 Convert times:
 
 ``` r
@@ -59,6 +61,8 @@ natural_time(Sys.time() + lubridate::ddays(1))
 #> [1] "23 hours from now"
 ```
 
+### File Sizes
+
 Convert file sizes:
 
 ``` r
@@ -76,6 +80,46 @@ natural_size(10**26 * 30)
 #> 3000.0 YB
 ```
 
+### Numbers
+
+Ordinals:
+
+``` r
+count_as_ordinal(1)
+#> [1] "1st"
+count_as_ordinal(111)
+#> [1] "111th"
+```
+
+Comma Seperation:
+
+``` r
+number_as_comma(1000)
+#> [1] "1,000"
+number_as_comma(10000)
+#> [1] "10,000"
+```
+
+Words:
+
+``` r
+count_as_word(100)
+#> [1] "100"
+count_as_word(1000000)
+#> [1] "1.0 million"
+count_as_word(1200000000)
+#> [1] "1.2 billion"
+```
+
+AP Format:
+
+``` r
+count_as_ap(3)
+#> [1] "three"
+count_as_ap(20)
+#> [1] "20"
+```
+
 Todo
 ----
 
@@ -84,4 +128,3 @@ This is still a very early cut of the package.
 -   Better support in times? For diff time?
 -   Maybe add times relative to other times?
 -   Export helper functions used in tests?
--   Port over the numbers code
