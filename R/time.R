@@ -123,10 +123,10 @@ natural_time <- function(value, use_months=TRUE) {
 #'
 #' For date values that are tomorrow, today or yesterday compared to present day
 #' returns representing string. Otherwise, returns a string formatted according
-#' to `format`
+#' to `fmt`
 #'
 #' @param value A date value
-#' @param format Optional formatting string for dates not yesterday, today, tomorrow
+#' @param fmt Optional formatting string for dates not yesterday, today, tomorrow
 #'
 #' @return A nicely formatted date
 #' @export
@@ -134,7 +134,7 @@ natural_time <- function(value, use_months=TRUE) {
 #' @examples
 #' natural_day(Sys.Date())
 #' natural_day(Sys.Date()-10)
-natural_day <- function(value, format='%b %d') {
+natural_day <- function(value, fmt='%b %d') {
   assert_that(is.date(value))
   delta <- value - today()
 
@@ -145,7 +145,7 @@ natural_day <- function(value, format='%b %d') {
   } else if (delta == -1) {
     out <- 'yesterday'
   } else {
-    out <- format(value, format)
+    out <- format(value, fmt)
   }
 
   out
