@@ -16,7 +16,7 @@ ordinals <- list(
 #'
 #' @param value A single positive integer
 #'
-#' @return A string with the ordinal reprisentation of a number
+#' @return A string with the ordinal representation of a number
 #' @export
 #'
 #' @examples
@@ -31,7 +31,7 @@ count_as_ordinal <- function(value) {
   paste0(value, ordinals[[as.character(value %% 10)]])
 }
 
-#' Convert an number to a string with comma seperation
+#' Convert an number to a string with comma separation
 #'
 #' Just a wrapper around `format` with defaults for full digits
 #'

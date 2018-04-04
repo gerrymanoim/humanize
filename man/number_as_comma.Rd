@@ -2,7 +2,7 @@
 % Please edit documentation in R/number.R
 \name{number_as_comma}
 \alias{number_as_comma}
-\title{Convert an number to a string with comma seperation}
+\title{Convert an number to a string with comma separation}
 \usage{
 number_as_comma(value)
 }

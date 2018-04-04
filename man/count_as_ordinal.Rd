@@ -10,7 +10,7 @@ count_as_ordinal(value)
 \item{value}{A single positive integer}
 }
 \value{
-A string with the ordinal reprisentation of a number
+A string with the ordinal representation of a number
 }
 \description{
 Transform a count to an ordinal string
